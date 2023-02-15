@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base=/docs",
+    "build": "tsc && vite build --base=/universal-quiz",
     "preview": "vite preview",
     "server": "json-server -p3001 --watch db.json"
   },
