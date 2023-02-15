@@ -1,0 +1,70 @@
+{
+  "questions": [
+    {
+      "correctAnswerId": "q1-a1",
+      "answers": [
+        {
+          "description": "Ilimitados",
+          "id": "q1-a1",
+          "isCorrect": true
+        },
+        {
+          "description": "5",
+          "id": "q1-a2",
+          "isCorrect": false
+        },
+        {
+          "description": "1",
+          "id": "q1-a3",
+          "isCorrect": false
+        }
+      ],
+      "id": "q1",
+      "question": "Cuántos useEffect puedes tener un componente?"
+    },
+    {
+      "correctAnswerId": "q2-a1",
+      "answers": [
+        {
+          "description": "Ilimitados2",
+          "id": "q2-a1",
+          "isCorrect": true
+        },
+        {
+          "description": "5",
+          "id": "q2-a2",
+          "isCorrect": false
+        },
+        {
+          "description": "1",
+          "id": "q2-a3",
+          "isCorrect": false
+        }
+      ],
+      "id": "q2",
+      "question": "Cuántos useEffect puedes tener un componente 2?"
+    },
+    {
+      "correctAnswerId": "q3-a1",
+      "answers": [
+        {
+          "description": "Ilimitados",
+          "id": "q3-a1",
+          "isCorrect": true
+        },
+        {
+          "description": "5",
+          "id": "q3-a2",
+          "isCorrect": false
+        },
+        {
+          "description": "1",
+          "id": "q3-a3",
+          "isCorrect": false
+        }
+      ],
+      "id": "q3",
+      "question": "Cuántos useEffect puedes tener un componente3?"
+    }
+  ]
+}
