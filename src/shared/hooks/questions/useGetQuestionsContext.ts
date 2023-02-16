@@ -5,9 +5,7 @@ import { IQuestionsContext } from '../../providers'
 export const useGetQuestionsContext = (): IQuestionsContext => {
   const [questions, setQuestions] = useState<IQuestion[]>([])
   const [loading, setLoading] = useState(false)
-  const [url, setUrl] = useState<string | null>(
-    'https://my-json-server.typicode.com/luisforerop/universal-quiz/questions'
-  )
+  const [url, setUrl] = useState<string | null>(null)
 
   useEffect(() => {
     setLoading(true)

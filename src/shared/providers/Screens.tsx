@@ -14,8 +14,7 @@ export const useScreensContext = () => useContext(ScreensContext)
 
 export const ScreensContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const { Provider } = ScreensContext
-  const [possibleScreen, setPossibleScreen] =
-    useState<PossibleScreen>('questions')
+  const [possibleScreen, setPossibleScreen] = useState<PossibleScreen>('home')
   const context: IScreensContext = {
     currentScreen: {
       set: (possibleScreen) => setPossibleScreen(possibleScreen),
