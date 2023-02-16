@@ -1,0 +1,52 @@
+.resultScreen {
+  color: aliceblue;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.resultScreen button {
+  width: 100%;
+  background-color: #141922;
+  color: #FFF;
+}
+
+.resultScreenQuestions {
+  height: 80%;
+  background-color: #181F29;
+  box-shadow: inset 6px 6px 12px #11161d,
+    inset -6px -6px 12px #1f2835;
+  overflow-y: scroll;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.resultsActionContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultScreenQuestions::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.resultScreenQuestions::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+
+.resultScreenQuestions::-webkit-scrollbar-button:increment,
+.resultScreenQuestions::-webkit-scrollbar-button {
+  display: none;
+}
+
+.resultScreenQuestions::-webkit-scrollbar-thumb {
+  background-color: var(--background-primary-contrast);
+  border-radius: 20px;
+  border: 2px solid var(--background-secondary-contrast);
+}
+
+.resultScreenQuestions::-webkit-scrollbar-track {
+  border-radius: 16px;
+  background-color: var(--background-secondary-contrast);
+}

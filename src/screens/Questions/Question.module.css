@@ -1,0 +1,56 @@
+.screenQuestionContainer {
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.questionContainer {
+  height: 100%;
+  border-radius: 8px;
+  padding: 16px;
+  background: #29303A;
+  background: #181F29;
+  box-shadow: inset 11px 11px 28px #141922,
+    inset -11px -11px 28px #1c2530;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 15px;
+  border: 1px solid #181F29;
+  border-radius: 8px;
+}
+
+.progressBar {
+  background-color: #181F29;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow:
+    inset 5px 5px 8px #11161d, inset -5px -5px 8px #1f2835;
+  transition: width 1s ease 0s;
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.questionContainer h2 {
+  margin: 0;
+}
+
+.answerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.answerContainer button {
+  background-color: #29303A;
+  color: #FFF;
+}

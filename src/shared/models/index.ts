@@ -11,6 +11,14 @@ export type SelectedAnswerType = {
   questionId: string
 }
 
+export interface RawQuestionType {
+  reason?: string
+  id: string
+  question: string
+  answers: AnswerType[]
+  correctAnswerId: string
+}
+
 export interface IQuestion {
   reason?: string
   id: string
@@ -18,6 +26,7 @@ export interface IQuestion {
   answers: AnswerType[]
   correctAnswerId: string
   selectedAnswerId?: string
+  questionNumber: number
 }
 
 export type LevelType = {

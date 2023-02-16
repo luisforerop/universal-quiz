@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import './App.css'
 import { Home, Questions, Results } from './screens'
 import { PossibleScreen } from './shared/models'
 import { useScreensContext } from './shared/providers'

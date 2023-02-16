@@ -1,0 +1,40 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 16px;
+  width: 100%;
+}
+
+.homeContainer {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.home input {
+  background-color: #181F29;
+  outline: none;
+  border: 1px solid #11161d;
+  color: #E1E9F1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.home button {
+  width: 100%;
+  color: #E1E9F1;
+  background-color: #42A7FF;
+}
+
+.home h1,
+.home h2 {
+  padding: 0;
+  margin: 0;
+  color: #FFF;
+}

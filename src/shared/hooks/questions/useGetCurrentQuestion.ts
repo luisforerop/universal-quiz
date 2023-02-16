@@ -4,6 +4,7 @@ import { useQuestionsContext, useScreensContext } from '../../providers'
 
 type UseGetCurrentQuestionType = () => {
   currentQuestion: IQuestion | null
+  questionsQuantity: number
   next: (answerId: string) => void
 }
 
@@ -40,6 +41,7 @@ export const useGetCurrentQuestion: UseGetCurrentQuestionType = () => {
   }
 
   return {
+    questionsQuantity: questions.length,
     currentQuestion,
     next,
   }
