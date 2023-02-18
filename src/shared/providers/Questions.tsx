@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren, createContext, useContext } from 'react'
 import { useGetQuestionsContext } from '../hooks'
-import { IQuestion } from '../models'
+import { IQuestion, ResultType } from '../models'
 
 export interface IQuestionsContext {
   questions: {
@@ -8,15 +8,13 @@ export interface IQuestionsContext {
     loading: boolean
     setAnswer: (questionId: string, selectedAnswerId: string) => void
   }
-  source: {
-    url: string | null
-    setUrl: (url: string) => void
+  results: {
+    list: ResultType[]
+    loading: boolean
   }
 }
 
 const QuestionsContext = createContext({} as IQuestionsContext)
-
-// un reducer. seteamos la answer seleccionada y configuramos el id de la question actual
 
 export const useQuestionsContext = () => useContext(QuestionsContext)
 

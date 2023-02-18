@@ -19,6 +19,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: auto;
+}
+
+.questionContainer h2 {
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .progressBarContainer {
@@ -53,4 +59,30 @@
 .answerContainer button {
   background-color: #29303A;
   color: #FFF;
+}
+
+/* SCROLL BARR */
+
+.questionContainer::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.questionContainer::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+
+.questionContainer::-webkit-scrollbar-button:increment,
+.questionContainer::-webkit-scrollbar-button {
+  display: none;
+}
+
+.questionContainer::-webkit-scrollbar-thumb {
+  background-color: var(--background-primary-contrast);
+  border-radius: 20px;
+  border: 2px solid var(--background-secondary-contrast);
+}
+
+.questionContainer::-webkit-scrollbar-track {
+  border-radius: 16px;
+  background-color: var(--background-secondary-contrast);
 }

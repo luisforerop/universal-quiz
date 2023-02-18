@@ -28,7 +28,7 @@ export const Questions = () => {
         </div>
       </div>
       <div className={styles.questionContainer}>
-        <h2>{currentQuestion.question}</h2>
+        <h2>{currentQuestion.text}</h2>
         <div className={styles.answerContainer}>
           {currentQuestion.answers.map((answer) => {
             const { description, id: answerId } = answer

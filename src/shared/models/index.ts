@@ -1,6 +1,4 @@
 export type AnswerType = {
-  isCorrect: boolean
-  level?: string
   description: string
   id: string
 }
@@ -11,29 +9,38 @@ export type SelectedAnswerType = {
   questionId: string
 }
 
-export interface RawQuestionType {
-  reason?: string
-  id: string
-  question: string
-  answers: AnswerType[]
-  correctAnswerId: string
-}
-
 export interface IQuestion {
-  reason?: string
+  reason: string
   id: string
-  question: string
+  text: string
   answers: AnswerType[]
-  correctAnswerId: string
-  selectedAnswerId?: string
   questionNumber: number
 }
 
-export type LevelType = {
+/* REQUEST */
+export type RawAnswerType = {
+  answer: string
   id: string
-  name: string
-  description?: string
 }
+
+export interface RawQuestionType {
+  reason: string
+  id: string
+  question: string
+  answers: RawAnswerType[]
+}
+
+export type GetQuestionsResponseType = {
+  statusCode: 200
+  questions: RawQuestionType[]
+}
+
+export type GetResultsResponseType = {
+  statusCode: 200
+  results: ResultType[]
+}
+
+/* STATES */
 
 export type QuestionState = {
   list: IQuestion[]
@@ -43,6 +50,17 @@ export type QuestionState = {
 export type AppState = {
   questions: QuestionState
   currentQuestion: IQuestion
+}
+
+export type AnswerToValidate = {
+  questionId: string
+  selectedAnswerId: string
+}
+
+export type ResultType = {
+  questionId: string
+  selectedAnswerId: string
+  correctAnswerId: string
 }
 
 /* SHARED */

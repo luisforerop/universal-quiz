@@ -1,59 +1,38 @@
-import { useEffect, useState } from 'react'
-import {
-  AnswerType,
-  useQuestionsContext,
-  useScreensContext,
-} from '../../shared'
+import { useGetResultInfo, useScreensContext } from '../../shared'
 import styles from './Results.module.css'
 
 export const Results = () => {
-  const {
-    questions: { list: questions },
-  } = useQuestionsContext()
+  const { score, questionsResults, loading } = useGetResultInfo()
   const { currentScreen } = useScreensContext()
 
-  const [score, setScore] = useState(0)
-
-  useEffect(() => {
-    const _score = questions.reduce(
-      (count, question) =>
-        count +
-        (question.correctAnswerId === question.selectedAnswerId ? 1 : 0),
-      0
-    )
-    setScore(_score)
-  }, [questions])
+  if (loading) {
+    return <div>Cargando resultados...</div>
+  }
 
   return (
     <div className={styles.resultScreen}>
       <div>
-        Puntaje: {score}/{questions.length}
+        Puntaje: {score}/{questionsResults.length}
       </div>
       <div className={styles.resultScreenQuestions}>
-        {questions.map(
+        {questionsResults.map(
           ({
             question,
-            answers,
-            correctAnswerId,
-            id,
+            answerIsCorrect,
+            correctAnswer,
+            selectedAnswer,
             reason,
-            selectedAnswerId,
+            questionId,
           }) => (
-            <div key={id}>
+            <div key={questionId}>
               <h3>{question}</h3>
-              {correctAnswerId !== selectedAnswerId && (
+              {
                 <div>
-                  {correctAnswerId === selectedAnswerId ? '✅' : '❌'}
-                  {
-                    answers.find(({ id }) => id === selectedAnswerId)
-                      ?.description
-                  }
+                  {answerIsCorrect ? '✅' : '❌'}
+                  {selectedAnswer}
                 </div>
-              )}
-              <div>
-                ✅{' '}
-                {answers.find(({ id }) => id === correctAnswerId)?.description}
-              </div>
+              }
+              {answerIsCorrect ? null : <div>{`✅ ${correctAnswer}`}</div>}
               {reason && <div>{reason}</div>}
             </div>
           )
