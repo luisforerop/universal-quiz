@@ -7,25 +7,30 @@ import type {
   IQuestion,
   ResultType,
 } from '../../models'
-import { IQuestionsContext } from '../../providers'
+import { IQuestionsContext, useScreensContext } from '../../providers'
+import { endpoint } from '../../constants'
 
 export const useGetQuestionsContext = (): IQuestionsContext => {
   const [questions, setQuestions] = useState<IQuestion[]>([])
-  const [answers, setAnswers] = useState<AnswerToValidate[]>([])
-  const [loading, setLoading] = useState(false)
+  const [questionsLoading, setQuestionsLoading] = useState(false)
+  const [questionsWithError, setQuestionsWithError] = useState(false)
   const [results, setResults] = useState<ResultType[]>([])
   const [resultsLoading, setResultsLoading] = useState(false)
+  const [resultsWithError, setResultsWithError] = useState(false)
+  const [answers, setAnswers] = useState<AnswerToValidate[]>([])
+  const baseUrl = endpoint()
+  const { currentScreen } = useScreensContext()
 
   useEffect(() => {
-    setLoading(true)
+    setQuestionsLoading(true)
     const stringLocalQuestions = localStorage.getItem('questions')
     const localQuestions: IQuestion[] = JSON.parse(stringLocalQuestions ?? '[]')
 
     if (!localQuestions.length) {
-      fetch(
-        'https://n586ggoxy8.execute-api.us-east-1.amazonaws.com/dev/getQuestions',
-        { method: 'GET', referrerPolicy: 'no-referrer' }
-      )
+      fetch(`${baseUrl}/getQuestions`, {
+        method: 'GET',
+        referrerPolicy: 'no-referrer',
+      })
         .then((res) => res.json())
         .then((data: GetQuestionsResponseType) => {
           const { questions } = data
@@ -48,35 +53,46 @@ export const useGetQuestionsContext = (): IQuestionsContext => {
           )
           localStorage.setItem('questions', JSON.stringify(normalizedQuestions))
           setQuestions(normalizedQuestions)
-          setLoading(false)
+          setQuestionsLoading(false)
+        })
+        .catch((e) => {
+          setQuestionsWithError(true)
+          setQuestionsLoading(false)
         })
     } else {
       setQuestions(localQuestions)
-      setLoading(false)
+      setQuestionsLoading(false)
     }
   }, [])
 
   useEffect(() => {
     if (answers.length === questions.length && questions.length > 0) {
       setResultsLoading(true)
-      fetch(
-        'https://n586ggoxy8.execute-api.us-east-1.amazonaws.com/dev/getResults',
-        {
-          body: JSON.stringify(answers),
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+      fetch(`${baseUrl}/getResults`, {
+        body: JSON.stringify(answers),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
         .then((res) => res.json())
         .then((data: GetResultsResponseType) => {
           const { results } = data
           setResults(results)
           setResultsLoading(false)
         })
+        .catch((e) => {
+          setResultsLoading(false)
+          setResultsWithError(true)
+        })
     }
   }, [answers])
+
+  useEffect(() => {
+    if (currentScreen.value === 'home') {
+      setAnswers([])
+    }
+  }, [currentScreen])
 
   const setAnswer = (questionId: string, selectedAnswerId: string) => {
     setAnswers((currentAnswers) =>
@@ -87,12 +103,14 @@ export const useGetQuestionsContext = (): IQuestionsContext => {
   return {
     questions: {
       list: questions,
-      loading,
+      loading: questionsLoading,
+      withError: questionsWithError,
       setAnswer,
     },
     results: {
       list: results,
       loading: resultsLoading,
+      withError: resultsWithError,
     },
   }
 }

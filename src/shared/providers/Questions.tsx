@@ -6,11 +6,13 @@ export interface IQuestionsContext {
   questions: {
     list: IQuestion[]
     loading: boolean
+    withError: boolean
     setAnswer: (questionId: string, selectedAnswerId: string) => void
   }
   results: {
     list: ResultType[]
     loading: boolean
+    withError: boolean
   }
 }
 

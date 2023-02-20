@@ -5,12 +5,19 @@ import { useQuestionsContext, useScreensContext } from '../../providers'
 type UseGetCurrentQuestionType = () => {
   currentQuestion: IQuestion | null
   questionsQuantity: number
+  questionsLoading: boolean
+  questionsWithError: boolean
   next: (answerId: string) => void
 }
 
 export const useGetCurrentQuestion: UseGetCurrentQuestionType = () => {
   const {
-    questions: { list: questions, setAnswer },
+    questions: {
+      list: questions,
+      setAnswer,
+      loading: questionsLoading,
+      withError: questionsWithError,
+    },
   } = useQuestionsContext()
   const { currentScreen } = useScreensContext()
   const [currentQuestion, setCurrentQuestion] = useState<IQuestion | null>(null)
@@ -43,6 +50,8 @@ export const useGetCurrentQuestion: UseGetCurrentQuestionType = () => {
   return {
     questionsQuantity: questions.length,
     currentQuestion,
+    questionsLoading,
+    questionsWithError,
     next,
   }
 }

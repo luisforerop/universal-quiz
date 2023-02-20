@@ -1,5 +1,5 @@
+import type { FC } from 'react'
 import { PropsWithChildren, createContext, useContext, useState } from 'react'
-import type { FC, Dispatch, SetStateAction } from 'react'
 import { PossibleScreen } from '../models'
 
 interface IScreensContext {
