@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useGetCurrentQuestion } from '../../shared'
 import styles from './Question.module.css'
+import { ErrorAd, LoadingAd } from '../../components'
 
 export const Questions = () => {
-  const { currentQuestion, next, questionsQuantity } = useGetCurrentQuestion()
+  const {
+    questionsWithError,
+    questionsQuantity,
+    questionsLoading,
+    currentQuestion,
+    next,
+  } = useGetCurrentQuestion()
   const [advance, setAdvance] = useState('0%')
 
   useEffect(() => {
@@ -16,7 +23,9 @@ export const Questions = () => {
     return () => {}
   }, [currentQuestion, questionsQuantity])
 
-  if (!currentQuestion) return <div>Cargando</div>
+  if (!currentQuestion && questionsLoading) return <LoadingAd />
+
+  if (!currentQuestion || questionsWithError) return <ErrorAd />
 
   return (
     <div className={styles.screenQuestionContainer}>

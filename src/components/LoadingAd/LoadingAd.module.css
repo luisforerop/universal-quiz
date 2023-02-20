@@ -1,0 +1,14 @@
+.loadingAdContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+}
+
+.loadingAdContainer h2 {
+  margin: 0;
+  color: #FFF;
+}

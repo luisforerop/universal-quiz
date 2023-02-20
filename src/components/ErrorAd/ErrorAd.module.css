@@ -1,0 +1,32 @@
+.errorAdContainer,
+.errorAdTextContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  color: #FFF;
+  width: 100%;
+  padding: 16px;
+}
+
+.errorAdContainer img {
+  height: 128px;
+  width: 250px;
+  object-fit: cover;
+  object-position: 0 -30px;
+}
+
+.errorAdTextContainer {
+  gap: 8px;
+}
+
+.errorAdContainer h1 {
+  margin: 0;
+}
+
+.errorAdContainer button {
+  width: 100%;
+  color: #E1E9F1;
+  background-color: #42A7FF;
+}

@@ -1,3 +1,4 @@
+import { LoadingAd } from '../../components'
 import { useGetResultInfo, useScreensContext } from '../../shared'
 import styles from './Results.module.css'
 
@@ -6,7 +7,7 @@ export const Results = () => {
   const { currentScreen } = useScreensContext()
 
   if (loading) {
-    return <div>Cargando resultados...</div>
+    return <LoadingAd />
   }
 
   return (
